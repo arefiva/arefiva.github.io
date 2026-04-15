@@ -1,6 +1,6 @@
 title: arefiva
 description: Thoughts on agentic development, projects, and more.
-url: "https://arefiva.github.io"
+url: "http://localhost:4000"
 baseurl: ""
 
 remote_theme: pages-themes/hacker@v0.2.0
@@ -40,4 +40,4 @@ exclude:
   - .gitignore
   - vendor/
   - .bundle/
-  - _config.local.yml
+  - _config.production.yml
