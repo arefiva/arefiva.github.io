@@ -12,11 +12,11 @@ I have been building software with an agentic workflow for a while now, and I ke
 
 ## The Agentic Cycle
 
-The core of this approach is a new kind of specification, one designed from the ground up to drive autonomous execution rather than to communicate requirements to a human reader, and that distinction shapes everything about how it is written. The rigor it demands is borrowed from TDD: before a single line of code is written, the specification must answer the same questions a practitioner asks when writing a test, such as what specific behavior must happen, what edge cases matter, what state changes are observable, and what verification would prove this is complete.
+The core of this approach is a specification that takes the familiar structure of a Product Requirements Document and adapts it for a fundamentally different audience: an autonomous agent rather than a human reader. That shift in audience shapes everything about how the specification is written, because a human reader can interpret ambiguous requirements, ask follow-up questions, and fill in gaps from context, while an agent cannot. The rigor it demands is borrowed from TDD: before a single line of code is written, the specification must answer the same questions a practitioner asks when writing a test, such as what specific behavior must happen, what edge cases matter, what state changes are observable, and what verification would prove this is complete.
 
 ### Writing the Specification
 
-When starting a feature, you move through a structured conversation in plan mode, describing the feature, the user stories that compose it, and the acceptance criteria that would verify each story is done. This conversation forces you to articulate not just what to build, but what done looks like. This is the red phase: defining the specification before any code exists, with the same discipline as writing a failing test. Once complete, the specification is captured as a Product Requirements Document, or PRD, expressed in a structured JSON format the agent directly consumes. Each story is decomposed to touch a small, coherent slice of the codebase, carrying specific implementation guidance about which files and patterns to follow, and acceptance criteria expressed as verifiable assertions rather than vague descriptions. A single story might look like this:
+When starting a feature, you move through a structured conversation in plan mode, describing the feature, the user stories that compose it, and the acceptance criteria that would verify each story is done. This conversation forces you to articulate not just what to build, but what done looks like. This is the red phase: defining the specification before any code exists, with the same discipline as writing a failing test. Once complete, the specification is captured as an AES, or Autonomous Execution Specification, a structured machine-consumable document that descends from the conventional PRD but is designed for a different audience and a different executor. Each story is decomposed to touch a small, coherent slice of the codebase, carrying specific implementation guidance about which files and patterns to follow, and acceptance criteria expressed as verifiable assertions rather than vague descriptions. A single story might look like this:
 
 ```json
 {
@@ -26,6 +26,7 @@ When starting a feature, you move through a structured conversation in plan mode
   "priority": 2,
   "complexity": "standard",
   "riskLevel": "low",
+  "preferredModel": "gpt-5.3-codex",
   "dependsOn": ["US-010"],
   "implementationNotes": "Add an aggregate_by_book method to PositionService in src/risk/position_service.py. Group positions by book_id and sum net_quantity. Follow the existing pattern in aggregate_by_counterparty.",
   "acceptanceCriteria": [
@@ -33,7 +34,8 @@ When starting a feature, you move through a structured conversation in plan mode
     "Positions with zero net_quantity are excluded from the result",
     "Unit tests cover empty input, single book, and multiple books with offsetting legs",
     "ruff check passes with no errors"
-  ]
+  ],
+  "passes": false
 }
 ```
 
@@ -49,7 +51,7 @@ The refactor phase remains entirely human. You open the diff, read the commits i
 
 ## The Red Phase Remains Central
 
-In traditional TDD, what distinguishes a productive red phase from a rushed one is the time spent interrogating the requirement before any code exists. Writing a PRD is the same exercise: answering hard questions about what the user story actually is, what acceptance criteria would verify it is done, and which patterns the codebase already has that should be followed. If you skip that thinking and hand a vague brief to an agent, you get vague code, just as a vague test produces vague software. The difference from a conventional PRD is not in the questions asked but in the precision required to answer them: a specification read by humans can imply intent and trust interpretation, but one executed by an agent cannot, because there is no one on the other side to fill in the gaps. The thinking that goes into a well-formed PRD is where the real intellectual work of the cycle lives, and it is deliberately kept with the human.
+In traditional TDD, what distinguishes a productive red phase from a rushed one is the time spent interrogating the requirement before any code exists. Writing an AES is the same exercise: answering hard questions about what the user story actually is, what acceptance criteria would verify it is done, and which patterns the codebase already has that should be followed. If you skip that thinking and hand a vague brief to an agent, you get vague code, just as a vague test produces vague software. The difference from a conventional PRD is not in the questions asked but in the precision required to answer them: a specification read by humans can imply intent and trust interpretation, but one executed by an agent cannot, because there is no one on the other side to fill in the gaps. The thinking that goes into a well-formed AES is where the real intellectual work of the cycle lives, and it is deliberately kept with the human.
 
 ## Connection Through Understanding
 
@@ -57,7 +59,7 @@ The obvious benefit of agentic development is throughput. Less obvious, and what
 
 ## Combining the Approaches
 
-The two approaches strengthen each other precisely because they enforce the same discipline at specification time. When writing a PRD, you apply the same rigor a TDD practitioner brings to writing tests, framing acceptance criteria as specific, testable behaviors. What does the function return when given an empty price series? What happens when a trade arrives without a recognized counterparty? What should the position calculation produce when the portfolio contains offsetting legs across different books? These questions distinguish a thorough PRD from a vague one, and they are exactly the questions that make tests meaningful rather than ornamental.
+The two approaches strengthen each other precisely because they enforce the same discipline at specification time. When writing an AES, you apply the same rigor a TDD practitioner brings to writing tests, framing acceptance criteria as specific, testable behaviors. What does the function return when given an empty price series? What happens when a trade arrives without a recognized counterparty? What should the position calculation produce when the portfolio contains offsetting legs across different books? These questions distinguish a thorough AES from a vague one, and they are exactly the questions that make tests meaningful rather than ornamental.
 
 You get the throughput benefits of agentic development and the agent's ability to handle scaffolding and boilerplate quickly, while maintaining the upfront thinking that prevents vague code. The human writes the specification in structured form, the agent implements against it, and the human reviews the result with the spec in hand, knowing exactly what was supposed to happen.
 
@@ -69,7 +71,7 @@ Agentic development carries a specific risk worth naming directly: cognitive deb
 
 ### The Prevention
 
-The agentic cycle is explicitly designed to prevent this. The PRD phase is where the genuine intellectual work happens: articulating what to build, why, what the constraints are, and what done looks like. The agent handles the mechanical repetition of implementation, but the thinking about how a feature fits into the existing architecture, what the edge cases are, and which patterns belong remains entirely with you, recorded in the specification before a line of code is written. When the PRD is clear and thorough, the subsequent implementation becomes comprehensible because you already understand what it was supposed to achieve. The mandatory human review reinforces this: you do not glance at code and approve it, but read the commits in the context of acceptance criteria you defined. When something looks off, you recognize it because the mismatch between what you specified and what was implemented is now visible. This is how shared understanding persists and how cognitive debt is kept at bay.
+The agentic cycle is explicitly designed to prevent this. The AES phase is where the genuine intellectual work happens: articulating what to build, why, what the constraints are, and what done looks like. The agent handles the mechanical repetition of implementation, but the thinking about how a feature fits into the existing architecture, what the edge cases are, and which patterns belong remains entirely with you, recorded in the specification before a line of code is written. When the AES is clear and thorough, the subsequent implementation becomes comprehensible because you already understand what it was supposed to achieve. The mandatory human review reinforces this: you do not glance at code and approve it, but read the commits in the context of acceptance criteria you defined. When something looks off, you recognize it because the mismatch between what you specified and what was implemented is now visible. This is how shared understanding persists and how cognitive debt is kept at bay.
 
 ## The Shape of the Work
 
