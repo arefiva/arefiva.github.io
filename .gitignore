@@ -2,3 +2,4 @@
 vendor/
 .bundle/
 _config.local.yml
+.github/
