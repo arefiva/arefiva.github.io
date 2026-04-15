@@ -73,7 +73,7 @@
   <div class="post-content">
     <p>Test-Driven Development rests on a deceptively simple mantra: Red goes to Green goes to Refactor. Write a failing test, make it pass, then clean it up. Repeat. What makes TDD powerful is not the tests themselves, but the discipline the cycle enforces. The red phase forces you to understand what you are building before you build it, because you cannot write a failing test for something you have not thought through. That clarity shapes how quickly and smoothly the green and refactor phases unfold. The green phase follows: write the minimum code to make the test pass, because the test is the specification. Then refactor, using a passing suite as a safety net to clean up the implementation while locking behavior in place. Do this across a career, and you end up with a codebase that is both well-tested and well-understood, because every piece was thought through before it existed.</p>
 
-<p>I have been building software with an agentic workflow for a while now, and I keep noticing something significant: the workflow follows the same cycle, just with different tools and a different executor.</p>
+<p>I have been building software with an agentic workflow for a while now, and I notice the workflow follows the same cycle as TDD, just with different tools and a different executor.</p>
 
 <h2 id="the-agentic-cycle">The Agentic Cycle</h2>
 
@@ -123,7 +123,7 @@
 
 <h2 id="combining-the-approaches">Combining the Approaches</h2>
 
-<p>The two approaches strengthen each other precisely because they enforce the same discipline at specification time. When writing an AES, you apply the same rigor a TDD practitioner brings to writing tests, framing acceptance criteria as specific, testable behaviors. What does the function return when given an empty price series? What happens when a trade arrives without a recognized counterparty? What should the position calculation produce when the portfolio contains offsetting legs across different books? These questions distinguish a thorough AES from a vague one, and they are exactly the questions that make tests meaningful rather than ornamental.</p>
+<p>The two approaches strengthen each other precisely because they enforce the same discipline at specification time. When writing an AES, you apply the same rigor a TDD practitioner brings to writing tests, framing acceptance criteria as specific, testable behaviors. What does the function return when given empty input? What happens when an edge case occurs? How should the system behave when constraints conflict? These questions distinguish a thorough AES from a vague one, and they are exactly the questions that make tests meaningful rather than ornamental.</p>
 
 <p>You get the throughput benefits of agentic development and the agent’s ability to handle scaffolding and boilerplate quickly, while maintaining the upfront thinking that prevents vague code. The human writes the specification in structured form, the agent implements against it, and the human reviews the result with the spec in hand, knowing exactly what was supposed to happen.</p>
 
@@ -147,7 +147,7 @@
 
 <p>The discipline is the same in both cases. Slow down at the specification phase, because the more clearly you can express what you need in a test or in acceptance criteria, the better the execution phase goes, whether the executor is you, an automated test runner, or an autonomous agent. Treat understanding as something you deliberately build, not something that just happens, and write down the why when decisions are made so that shared understanding persists. The agentic cycle has not replaced TDD’s core insight but given it a new set of tools to run on, and when combined deliberately, especially in how the red phase is structured, the two approaches reinforce each other in ways that neither achieves alone.</p>
 
-<p>If you take one thing from this: before you write a single line of code, and before you hand a task to an agent, write down what done looks like. Not in broad strokes, but specifically enough that someone, or something, could verify it without asking a follow-up question. Frame acceptance criteria as assertions, not descriptions. When the agent delivers, review the result against what you specified, not just against whether it compiles and the tests pass. Do that consistently, and you get throughput without the cognitive debt. Skip it, and you get technically correct code that may not be correct for your system.</p>
+<p>Where this becomes tangible: the specification is where you articulate what done looks like, not in broad strokes but with enough specificity that someone, or something, could verify it without asking a follow-up question. Frame acceptance criteria as assertions, not descriptions. When the agent delivers, review the result against what you specified, not just against whether it compiles and the tests pass. The difference between getting throughput without cognitive debt and getting technically correct code that misses the mark often comes down to that one phase: how clearly the requirement was thought through before a line existed.</p>
 
   </div>
 
