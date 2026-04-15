@@ -1,0 +1,42 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "arefiva" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation "Main navigation" [ref=e5]:
+        - link "Home" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - link "Agentic Development" [ref=e7] [cursor=pointer]:
+          - /url: /agentic-development/
+        - link "Projects" [ref=e8] [cursor=pointer]:
+          - /url: /projects/
+        - link "About" [ref=e9] [cursor=pointer]:
+          - /url: /about/
+      - button "Toggle dark/light mode" [ref=e10] [cursor=pointer]: ☀️
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Agentic Development" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Articles on building with AI agents, automation, and the future of software development.
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - generic [ref=e18]: Apr 15, 2026
+          - 'link "Specification-First Development: The Mental Shift" [ref=e19] [cursor=pointer]':
+            - /url: /agentic-development/2026/04/15/specification-first-development-the-mental-shift.html
+          - paragraph [ref=e20]: There is a specific pull toward starting with code. Requirements arrive with enough shape to begin, the architecture is familiar, and writing code gives you something concrete to hold, something...
+        - listitem [ref=e21]:
+          - generic [ref=e22]: Apr 15, 2026
+          - link "Red, Green, Refactor With an AI in the Loop" [ref=e23] [cursor=pointer]:
+            - /url: /agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html
+          - paragraph [ref=e24]: "Test-Driven Development rests on a deceptively simple mantra: Red goes to Green goes to Refactor. Write a failing test, make it pass, then clean it up. Repeat. What makes TDD..."
+        - listitem [ref=e25]:
+          - generic [ref=e26]: Apr 15, 2026
+          - link "Welcome to Agentic Development" [ref=e27] [cursor=pointer]:
+            - /url: /agentic-development/2026/04/15/welcome-to-agentic-development.html
+          - paragraph [ref=e28]: Welcome to the Agentic Development section of this blog. This is where I explore building software systems that use AI agents to reason about problems, make decisions, and take action...
+  - contentinfo [ref=e29]:
+    - paragraph [ref=e31]:
+      - text: © 2026 arefiva. Built with
+      - link "Jekyll" [ref=e32] [cursor=pointer]:
+        - /url: https://jekyllrb.com
+      - text: .

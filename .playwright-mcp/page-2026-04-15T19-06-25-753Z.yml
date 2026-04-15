@@ -1,0 +1,58 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "arefiva" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation "Main navigation" [ref=e5]:
+        - link "Home" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - link "Agentic Development" [ref=e7] [cursor=pointer]:
+          - /url: /agentic-development/
+        - link "Projects" [ref=e8] [cursor=pointer]:
+          - /url: /projects/
+        - link "About" [ref=e9] [cursor=pointer]:
+          - /url: /about/
+      - button "Toggle dark/light mode" [ref=e10] [cursor=pointer]: ☀️
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - heading "Hi, I'm arefiva" [level=1] [ref=e13]
+      - paragraph [ref=e14]: Welcome to my blog. This is a space where I explore agentic development, share projects, and think through ideas at the intersection of software engineering and AI.
+    - heading "Latest from Agentic Development" [level=2] [ref=e15]
+    - list [ref=e16]:
+      - listitem [ref=e17]:
+        - generic [ref=e18]: Apr 15, 2026
+        - 'link "Specification-First Development: The Mental Shift" [ref=e19] [cursor=pointer]':
+          - /url: /agentic-development/2026/04/15/specification-first-development-the-mental-shift.html
+        - paragraph [ref=e20]: There is a specific pull toward starting with code. Requirements arrive with enough shape to begin, the architecture is familiar, and writing code gives you...
+      - listitem [ref=e21]:
+        - generic [ref=e22]: Apr 15, 2026
+        - link "Red, Green, Refactor With an AI in the Loop" [ref=e23] [cursor=pointer]:
+          - /url: /agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html
+        - paragraph [ref=e24]: "Test-Driven Development rests on a deceptively simple mantra: Red goes to Green goes to Refactor. Write a failing test, make it pass, then clean it..."
+      - listitem [ref=e25]:
+        - generic [ref=e26]: Apr 15, 2026
+        - link "Welcome to Agentic Development" [ref=e27] [cursor=pointer]:
+          - /url: /agentic-development/2026/04/15/welcome-to-agentic-development.html
+        - paragraph [ref=e28]: Welcome to the Agentic Development section of this blog. This is where I explore building software systems that use AI agents to reason about problems,...
+    - paragraph [ref=e29]:
+      - link "All posts →" [ref=e30] [cursor=pointer]:
+        - /url: /agentic-development/
+    - generic [ref=e31]:
+      - link "Agentic Development Articles on building with AI agents, automation, and the future of software development." [ref=e32] [cursor=pointer]:
+        - /url: /agentic-development/
+        - heading "Agentic Development" [level=3] [ref=e33]
+        - paragraph [ref=e34]: Articles on building with AI agents, automation, and the future of software development.
+      - link "Projects Things I've built — experiments, tools, and open source work." [ref=e35] [cursor=pointer]:
+        - /url: /projects/
+        - heading "Projects" [level=3] [ref=e36]
+        - paragraph [ref=e37]: Things I've built — experiments, tools, and open source work.
+      - link "About Me Who I am, what I do, and how to get in touch." [ref=e38] [cursor=pointer]:
+        - /url: /about/
+        - heading "About Me" [level=3] [ref=e39]
+        - paragraph [ref=e40]: Who I am, what I do, and how to get in touch.
+  - contentinfo [ref=e41]:
+    - paragraph [ref=e43]:
+      - text: © 2026 arefiva. Built with
+      - link "Jekyll" [ref=e44] [cursor=pointer]:
+        - /url: https://jekyllrb.com
+      - text: .

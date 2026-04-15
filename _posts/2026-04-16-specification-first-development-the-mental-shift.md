@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Specification-First Development: The Mental Shift"
-date: 2026-04-16 09:00:00 +0000
+date: 2026-04-15 18:00:00 +0000
 categories: [agentic-development]
 tags: [specification, agentic-development, workflow, discipline]
 ---
