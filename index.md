@@ -4,7 +4,7 @@ title: Home
 ---
 <div class="home-hero">
   <h1>Hi, I'm <span class="accent">arefiva</span></h1>
-  <p>Welcome to my blog — a space where I write about agentic development, share projects, and explore ideas at the intersection of software engineering and AI.</p>
+  <p>Welcome to my blog. This is a space where I explore agentic development, share projects, and think through ideas at the intersection of software engineering and AI.</p>
 </div>
 
 <h2>Latest from Agentic Development</h2>
