@@ -6,49 +6,38 @@ categories: [agentic-development]
 tags: [intro, agents, AI]
 ---
 
-Welcome to the **Agentic Development** section of this blog. This is where I explore building software systems that use AI agents, systems that can plan, reason, and act with minimal human intervention. These are not just orchestration tools or workflow runners, but something meaningfully different in how we design and think about software.
+Welcome to the **Agentic Development** section of this blog. This is where I explore building software systems that use AI agents to reason about problems, make decisions, and take action with significant autonomy. These systems are not merely orchestration layers or workflow runners that execute predetermined sequences. Rather, they represent a meaningful shift in how we think about delegating work and structuring software itself.
 
 ## What is Agentic Development?
 
-Agentic development is the practice of designing and building software where AI agents take on active roles in completing tasks. What distinguishes this from traditional automation is that agents operate with a degree of autonomy and reasoning. They do not follow a predetermined sequence of steps, but rather make decisions about which actions to take based on the problem at hand and the feedback they receive. An agent in this sense can:
+Agentic development is the practice of designing and building software where AI agents operate as active participants in accomplishing tasks, not as passive executors of fixed scripts. What distinguishes this from traditional automation is the degree of reasoning involved. Traditional automation follows a predefined sequence: if condition A, then execute step B, then execute step C. Agentic systems, by contrast, receive a goal or a problem description and reason about which actions to take, in what order, based on what they observe and the feedback they receive along the way. An agent operates by perceiving its environment, reasoning about possible actions, executing them, observing the results, and adjusting its approach based on what it learns. This means the agent can:
 
-- **Plan** multi-step workflows dynamically based on observations and constraints
-- **Use tools** such as search, code execution, APIs, and file systems to gather information and take action
-- **Adapt** its approach based on results and feedback from each step
-- **Collaborate** with other agents and with humans throughout the execution process
+- **Reason about goals** and decompose them into a sequence of actions rather than following a rigid predetermined path
+- **Use tools** such as search, code execution, APIs, and file systems to gather information, take action, and observe the results
+- **Adapt its approach** based on what it discovers at each step, adjusting its strategy or trying alternative paths when an approach does not yield the expected results
+- **Collaborate** with other agents or with humans, asking for clarification when needed and incorporating feedback into its reasoning
 
-## A Simple Example
+## How an Agent Works in Practice
 
-Here's a taste of what an agent invocation might look like in Python:
+Consider a code review task. You provide the agent with a high-level instruction such as "Review src/auth.py for potential bugs and architectural issues" along with tools it can use: the ability to read files, run tests, execute commands, and query the codebase. The agent then reasons about how to accomplish this. It might start by reading the file to understand what the code does, then run the existing test suite to see what behaviors are currently verified, then run static analysis tools to check for obvious issues, and finally synthesize a review based on all of this information. At no point did you specify the exact sequence of steps, the order in which to run the tools, or what decision to make when one tool's output contradicts another. The agent made those decisions by reasoning about the goal and the results of each action. This is fundamentally different from a script that says "always read the file first, then always run tests, then always check style." The agent's sequence emerges from its reasoning about what information is needed to accomplish the goal.
 
-```python
-from agents import Agent, Runner
+## The Shift in How We Specify Work
 
-agent = Agent(
-    name="code-reviewer",
-    instructions="Review the provided code for bugs and suggest improvements.",
-    tools=["read_file", "run_tests"],
-)
+There is a fundamental difference between building traditional software and building agentic systems, and it lies in how we specify what needs to be done. Traditional software development requires developers to write imperative code: this happens first, then that happens, then check this condition, and if true then do that. Every decision point, every fallback path, every sequence must be written out explicitly. The software is a series of instructions for a computer to follow. Agentic systems change this dynamic. Instead of specifying the how, you specify the what and the why. You describe the goal, the constraints, the tools available, and what success looks like. The agent then reasons about how to achieve it.
 
-result = Runner.run_sync(agent, "Review src/auth.py")
-print(result.final_output)
-```
+This shift is not merely a convenience, it reflects a different way of thinking about problem-solving. When you write imperative code, you must anticipate all possible paths through a system. When you specify a goal for an agent, you articulate what you want to happen and trust the agent's reasoning to find a path. This requires a different discipline in how we think about software design:
 
-What happens here is that the agent receives a high-level goal, reasons about which tools would be useful to accomplish it, calls those tools, and then produces a reasoned result based on what it learned. No procedural script exists that tells it exactly which file to read first or in what order to run the tests. The agent decides that based on its instructions and the feedback it receives from each action.
+- **Goals and constraints** must be clear enough that an autonomous reasoner can understand what success looks like without needing to ask a follow-up question
+- **The tools and capabilities** available to the agent must be well-designed so that the agent can effectively gather information and take meaningful action
+- **Feedback mechanisms** must be explicit so that the agent can recognize when it has gone off track and correct itself
 
-## Why This Matters
+These three elements form the foundation of agentic systems. When they are well-designed, an agent can accomplish complex tasks. When they are poorly specified, the agent produces technically correct output that misses the point.
 
-There is a fundamental shift in how we think about software when we move from imperative to agentic systems. Traditional software development requires developers to specify in detail exactly how a task should be accomplished. Every step, every decision point, every fallback path must be written out. Agentic systems, by contrast, allow us to specify what we want done and delegate the how to the model. This changes development from writing imperative procedures to something more abstract: defining clear goals and constraints, providing the right set of tools, and designing feedback loops that help the agent stay on track and correct itself when needed.
+## What's Next
 
-1. **Define clear goals and constraints** for what you want the agent to accomplish
-2. **Provide the right tools** that the agent can use to gather information and take action
-3. **Design feedback loops and guardrails** to ensure the agent stays aligned with your intentions
+In the posts that follow, I plan to explore specific patterns and disciplines for building agentic systems effectively. Some posts will examine agent architectures and the tradeoffs between single-agent and multi-agent systems. Others will focus on tool design: how to create tools that agents can use reliably to gather information and take action. I will also cover evaluation and testing, since traditional testing approaches do not translate directly to systems where the agent's path is not predetermined. And throughout, I will share case studies drawn from real work that show how these patterns play out in practice and where the discipline matters most.
 
-## What's Coming
-
-In future posts I plan to cover topics like agent architectures (exploring the tradeoffs between single-agent and multi-agent systems), tool design patterns and how to create tools that agents can use effectively, evaluation and testing strategies for agentic systems where traditional testing approaches do not apply directly, and real-world case studies that show how these patterns play out in practice.
-
-I am still learning this space myself. The patterns are emerging, and there is much to discover about what works and what does not. I look forward to exploring this with you.
+I am still learning this space myself. The patterns are emerging, and there is much I do not yet understand about what works reliably and where the boundaries of the approach lie. I remain genuinely open to different approaches and to being wrong about what I think I know.
 
 ---
 
