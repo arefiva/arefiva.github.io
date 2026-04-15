@@ -2,49 +2,49 @@
 ---
 
 /* =========================================================
-   CSS Custom Properties — Dark mode (default, Hacker-inspired)
+   CSS Custom Properties — Modern, minimalist palette
    ========================================================= */
 :root {
-  --bg:          #0d0d0d;
-  --bg-secondary:#151515;
-  --surface:     #1a1a1a;
-  --border:      #2a2a2a;
-  --text:        #c9d1d9;
-  --text-muted:  #8b949e;
-  --accent:      #00ff9d;
-  --accent-dim:  #00cc7a;
-  --link:        #00ff9d;
-  --link-hover:  #ffffff;
-  --code-bg:     #161b22;
-  --code-text:   #e6edf3;
-  --tag-bg:      #1f2937;
-  --tag-text:    #9ca3af;
-  --heading:     #ffffff;
-  --nav-active:  #00ff9d;
-  --toggle-bg:   #1f2937;
-  --toggle-border: #374151;
+  --bg:          #0f1419;
+  --bg-secondary:#151b25;
+  --surface:     #1a212d;
+  --border:      #2d3d52;
+  --text:        #d0d5dd;
+  --text-muted:  #8d96a7;
+  --accent:      #4a90e2;
+  --accent-dim:  #3d76c6;
+  --link:        #4a90e2;
+  --link-hover:  #6ba3e8;
+  --code-bg:     #16202b;
+  --code-text:   #d0d5dd;
+  --tag-bg:      #1e2a3a;
+  --tag-text:    #8d96a7;
+  --heading:     #e8eef7;
+  --nav-active:  #4a90e2;
+  --toggle-bg:   #1e2a3a;
+  --toggle-border: #2d3d52;
 }
 
 /* Light mode overrides */
 body.light-mode {
-  --bg:          #f8f9fa;
+  --bg:          #fafbfc;
   --bg-secondary:#ffffff;
-  --surface:     #e9ecef;
-  --border:      #dee2e6;
-  --text:        #212529;
-  --text-muted:  #6c757d;
-  --accent:      #0d6e3b;
-  --accent-dim:  #0a5530;
-  --link:        #0d6e3b;
-  --link-hover:  #000000;
-  --code-bg:     #f1f3f4;
+  --surface:     #f5f7fa;
+  --border:      #d5dce3;
+  --text:        #24292e;
+  --text-muted:  #57606a;
+  --accent:      #4a90e2;
+  --accent-dim:  #3d76c6;
+  --link:        #4a90e2;
+  --link-hover:  #2e5cb8;
+  --code-bg:     #f1f3f5;
   --code-text:   #24292e;
-  --tag-bg:      #e2e8f0;
-  --tag-text:    #475569;
+  --tag-bg:      #eaeef2;
+  --tag-text:    #57606a;
   --heading:     #111827;
-  --nav-active:  #0d6e3b;
-  --toggle-bg:   #e2e8f0;
-  --toggle-border: #cbd5e1;
+  --nav-active:  #4a90e2;
+  --toggle-bg:   #eaeef2;
+  --toggle-border: #d5dce3;
 }
 
 /* =========================================================
