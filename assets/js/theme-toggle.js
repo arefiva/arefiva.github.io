@@ -28,4 +28,22 @@
       localStorage.setItem(STORAGE_KEY, isLight ? "light" : "dark");
     });
   }
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("site-nav");
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", function () {
+      const isOpen = nav.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", String(isOpen));
+      hamburger.classList.toggle("open", isOpen);
+    });
+    nav.querySelectorAll(".nav-link").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.classList.remove("open");
+      });
+    });
+  }
 })();
