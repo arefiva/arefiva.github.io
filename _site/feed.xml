@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-04-15T10:57:45+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">arefiva</title><subtitle>Thoughts on agentic development, projects, and more.</subtitle><entry><title type="html">Welcome to Agentic Development</title><link href="http://localhost:4000/agentic-development/2026/04/15/welcome-to-agentic-development.html" rel="alternate" type="text/html" title="Welcome to Agentic Development" /><published>2026-04-15T10:00:00+02:00</published><updated>2026-04-15T10:00:00+02:00</updated><id>http://localhost:4000/agentic-development/2026/04/15/welcome-to-agentic-development</id><content type="html" xml:base="http://localhost:4000/agentic-development/2026/04/15/welcome-to-agentic-development.html"><![CDATA[<p>Welcome to the <strong>Agentic Development</strong> section of this blog. This is where I’ll write about building software systems that use AI agents — systems that can <em>plan</em>, <em>reason</em>, and <em>act</em> with minimal human intervention.</p>
+
+<h2 id="what-is-agentic-development">What is Agentic Development?</h2>
+
+<p>Agentic development is the practice of designing and building software where AI agents take on active roles in completing tasks. Unlike traditional automation, agents can:</p>
+
+<ul>
+  <li><strong>Plan</strong> multi-step workflows dynamically</li>
+  <li><strong>Use tools</strong> — search, code execution, APIs, file systems</li>
+  <li><strong>Adapt</strong> based on results and feedback</li>
+  <li><strong>Collaborate</strong> with other agents and with humans</li>
+</ul>
+
+<h2 id="a-simple-example">A Simple Example</h2>
+
+<p>Here’s a taste of what an agent invocation might look like in Python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">agents</span> <span class="kn">import</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">Runner</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s">"code-reviewer"</span><span class="p">,</span>
+    <span class="n">instructions</span><span class="o">=</span><span class="s">"Review the provided code for bugs and suggest improvements."</span><span class="p">,</span>
+    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="s">"read_file"</span><span class="p">,</span> <span class="s">"run_tests"</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">.</span><span class="n">run_sync</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="s">"Review src/auth.py"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">final_output</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The agent receives a high-level goal, decides which tools to call, and returns a reasoned result — no procedural script required.</p>
+
+<h2 id="why-this-matters">Why This Matters</h2>
+
+<p>Traditional software requires developers to specify <em>exactly</em> how a task should be done. Agentic systems let you specify <em>what</em> you want done, delegating the <em>how</em> to the model. This shifts development from writing imperative steps to:</p>
+
+<ol>
+  <li>Defining clear goals and constraints</li>
+  <li>Providing the right tools</li>
+  <li>Designing feedback loops and guardrails</li>
+</ol>
+
+<h2 id="whats-coming">What’s Coming</h2>
+
+<p>In future posts I’ll cover:</p>
+
+<ul>
+  <li>Agent architectures (single-agent vs. multi-agent)</li>
+  <li>Tool design patterns</li>
+  <li>Evaluation and testing for agentic systems</li>
+  <li>Real-world case studies</li>
+</ul>
+
+<p>Stay tuned, and feel free to explore the rest of the site.</p>
+
+<hr />
+
+<p><em>This blog is built with <a href="https://jekyllrb.com">Jekyll</a> and hosted on GitHub Pages.</em></p>]]></content><author><name></name></author><category term="agentic-development" /><category term="intro" /><category term="agents" /><category term="AI" /><summary type="html"><![CDATA[Welcome to the Agentic Development section of this blog. This is where I’ll write about building software systems that use AI agents — systems that can plan, reason, and act with minimal human intervention.]]></summary></entry></feed>

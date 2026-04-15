@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to Agentic Development | arefiva</title>
+  <meta name="description" content="Thoughts on agentic development, projects, and more.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Welcome to Agentic Development | arefiva</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Welcome to Agentic Development" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Welcome to the Agentic Development section of this blog. This is where I’ll write about building software systems that use AI agents — systems that can plan, reason, and act with minimal human intervention." />
+<meta property="og:description" content="Welcome to the Agentic Development section of this blog. This is where I’ll write about building software systems that use AI agents — systems that can plan, reason, and act with minimal human intervention." />
+<link rel="canonical" href="http://localhost:4000/agentic-development/2026/04/15/welcome-to-agentic-development.html" />
+<meta property="og:url" content="http://localhost:4000/agentic-development/2026/04/15/welcome-to-agentic-development.html" />
+<meta property="og:site_name" content="arefiva" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-04-15T10:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Welcome to Agentic Development" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-04-15T10:00:00+02:00","datePublished":"2026-04-15T10:00:00+02:00","description":"Welcome to the Agentic Development section of this blog. This is where I’ll write about building software systems that use AI agents — systems that can plan, reason, and act with minimal human intervention.","headline":"Welcome to Agentic Development","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/agentic-development/2026/04/15/welcome-to-agentic-development.html"},"url":"http://localhost:4000/agentic-development/2026/04/15/welcome-to-agentic-development.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="arefiva" />
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a class="site-title" href="/">arefiva</a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      
+      <a class="nav-link" href="/">Home</a>
+      
+      <a class="nav-link" href="/agentic-development/">Agentic Development</a>
+      
+      <a class="nav-link" href="/projects/">Projects</a>
+      
+      <a class="nav-link" href="/about/">About</a>
+      
+    </nav>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+      <span class="toggle-icon" id="toggle-icon">☀️</span>
+    </button>
+  </div>
+</header>
+
+
+  <main id="main-content">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">Welcome to Agentic Development</h1>
+    <div class="post-meta">
+      <time datetime="2026-04-15T10:00:00+02:00">April 15, 2026</time>
+      
+        <span class="post-tags">
+          <span class="tag">intro</span><span class="tag">agents</span><span class="tag">AI</span>
+        </span>
+      
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>Welcome to the <strong>Agentic Development</strong> section of this blog. This is where I’ll write about building software systems that use AI agents — systems that can <em>plan</em>, <em>reason</em>, and <em>act</em> with minimal human intervention.</p>
+
+<h2 id="what-is-agentic-development">What is Agentic Development?</h2>
+
+<p>Agentic development is the practice of designing and building software where AI agents take on active roles in completing tasks. Unlike traditional automation, agents can:</p>
+
+<ul>
+  <li><strong>Plan</strong> multi-step workflows dynamically</li>
+  <li><strong>Use tools</strong> — search, code execution, APIs, file systems</li>
+  <li><strong>Adapt</strong> based on results and feedback</li>
+  <li><strong>Collaborate</strong> with other agents and with humans</li>
+</ul>
+
+<h2 id="a-simple-example">A Simple Example</h2>
+
+<p>Here’s a taste of what an agent invocation might look like in Python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">agents</span> <span class="kn">import</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">Runner</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s">"code-reviewer"</span><span class="p">,</span>
+    <span class="n">instructions</span><span class="o">=</span><span class="s">"Review the provided code for bugs and suggest improvements."</span><span class="p">,</span>
+    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="s">"read_file"</span><span class="p">,</span> <span class="s">"run_tests"</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">.</span><span class="n">run_sync</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="s">"Review src/auth.py"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">final_output</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The agent receives a high-level goal, decides which tools to call, and returns a reasoned result — no procedural script required.</p>
+
+<h2 id="why-this-matters">Why This Matters</h2>
+
+<p>Traditional software requires developers to specify <em>exactly</em> how a task should be done. Agentic systems let you specify <em>what</em> you want done, delegating the <em>how</em> to the model. This shifts development from writing imperative steps to:</p>
+
+<ol>
+  <li>Defining clear goals and constraints</li>
+  <li>Providing the right tools</li>
+  <li>Designing feedback loops and guardrails</li>
+</ol>
+
+<h2 id="whats-coming">What’s Coming</h2>
+
+<p>In future posts I’ll cover:</p>
+
+<ul>
+  <li>Agent architectures (single-agent vs. multi-agent)</li>
+  <li>Tool design patterns</li>
+  <li>Evaluation and testing for agentic systems</li>
+  <li>Real-world case studies</li>
+</ul>
+
+<p>Stay tuned, and feel free to explore the rest of the site.</p>
+
+<hr />
+
+<p><em>This blog is built with <a href="https://jekyllrb.com">Jekyll</a> and hosted on GitHub Pages.</em></p>
+
+  </div>
+
+  <footer class="post-footer">
+    <a href="/agentic-development/">&larr; Back to Agentic development</a>
+  </footer>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 arefiva. Built with <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>.</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/theme-toggle.js"></script>
+</body>
+</html>
