@@ -1,0 +1,43 @@
+title: arefiva
+description: Thoughts on agentic development, projects, and more.
+url: "http://localhost:4000"
+baseurl: ""
+
+remote_theme: pages-themes/hacker@v0.2.0
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Markdown
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
+
+# Navigation
+nav_links:
+  - title: Home
+    url: /
+  - title: Agentic Development
+    url: /agentic-development/
+  - title: Projects
+    url: /projects/
+  - title: About
+    url: /about/
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
+  - vendor/
+  - .bundle/
+  - _config.production.yml
