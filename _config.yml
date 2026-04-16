@@ -23,8 +23,6 @@ paginate_path: "/page:num/"
 
 # Navigation
 nav_links:
-  - title: Home
-    url: /
   - title: Agentic Development
     url: /agentic-development/
   - title: Projects

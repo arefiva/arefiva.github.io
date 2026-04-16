@@ -3,8 +3,8 @@ layout: default
 title: Home
 ---
 <div class="home-hero">
-  <h1>Hi, I'm <span class="accent">arefiva</span></h1>
-  <p>Welcome to my blog. This is a space where I explore agentic development, share projects, and think through ideas at the intersection of software engineering and AI.</p>
+  <h1>Welcome to <span class="accent">arefiva</span></h1>
+  <p>Exploring how to build software systems where AI agents reason about problems, take action, and operate with meaningful autonomy. This is where I share what I am learning about agentic development, the patterns that work, and the disciplines required to build these systems well.</p>
 </div>
 
 <h2>Latest from Agentic Development</h2>
