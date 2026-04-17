@@ -14,8 +14,11 @@ That is what Ralph is for.
 
 Using an AI coding agent without structure introduces a set of failure modes that compound quietly rather than loudly. Context rot is one of the more insidious ones: as a conversation with an agent grows longer, earlier parts of the context get compressed or pushed beyond the effective attention window, and the agent begins to forget decisions it made earlier in the session, repeat work, or contradict architectural choices it already committed to. This is not a flaw in the agent so much as a fundamental characteristic of how large language models process long contexts, and it is worth designing around deliberately rather than hoping it will not matter.
 
-Beyond context rot, an agent working through a multi-story feature without orchestration has no persistent memory of intent across sessions. It knows what files it can see and what you told it in the current prompt, but not what the overall feature was supposed to achieve, which stories were already done, or what architectural constraints were established in earlier sessions. The result is an agent that is technically capable of implementing each story in isolation but has no way to ensure the stories cohere.
+### Beyond context rot
 
+An agent working through a multi-story feature without orchestration has no persistent memory of intent across sessions. It knows what files it can see and what you told it in the current prompt, but not what the overall feature was supposed to achieve, which stories were already done, or what architectural constraints were established in earlier sessions. The result is an agent that is technically capable of implementing each story in isolation but has no way to ensure the stories cohere.
+
+### Quality enforcement
 Quality enforcement is a third gap. Without something checking the result of each story before the next begins, a failed or partial implementation becomes the foundation for subsequent work, and the errors compound until the feature fails at integration time rather than at the story level where they are cheap to fix.
 
 Ralph addresses all of these systematically.
