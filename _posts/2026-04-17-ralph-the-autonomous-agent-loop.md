@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ralph: Running the Agentic Loop Automatically"
-date: 2026-04-17 08:00:00 +0000
+date: 2026-04-17 07:00:00 +0000
 categories: [agentic-development]
 tags: [agentic-development, ralph, automation, workflow, TDD]
 ---
