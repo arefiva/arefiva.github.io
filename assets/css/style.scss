@@ -52,13 +52,13 @@ body.light-mode {
    ========================================================= */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 17.6px; scroll-behavior: smooth; }
+html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.7;
   transition: background-color 0.25s ease, color 0.25s ease;
   min-height: 100vh;
@@ -80,9 +80,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 1.5rem 0 0.75rem;
   font-family: "Georgia", "Garamond", "Playfair Display", serif;
 }
-h1 { font-size: 2.2rem; }
-h2 { font-size: 1.65rem; }
-h3 { font-size: 1.375rem; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
 
 p { margin: 0 0 1rem; }
 
@@ -268,7 +268,7 @@ pre code {
 .page-header, .post-header { margin-bottom: 2rem; }
 
 .page-title, .post-title {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: var(--heading);
   margin-top: 0;
 }
@@ -359,7 +359,7 @@ pre code {
   margin-bottom: 3rem;
 }
 .home-hero h1 {
-  font-size: 2.25rem;
+  font-size: 2.05rem;
   margin-top: 0;
 }
 .home-hero .accent { color: var(--accent); }
@@ -386,7 +386,7 @@ pre code {
    Responsive
    ========================================================= */
 @media (max-width: 640px) {
-  html { font-size: 15px; }
+  html { font-size: 14px; }
 
   .header-inner {
     gap: 0.5rem;
