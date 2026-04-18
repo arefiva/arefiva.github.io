@@ -16,7 +16,7 @@ a { color: var(--link); text-decoration: none; transition: color 0.15s ease; }
 
 a:hover { color: var(--link-hover); text-decoration: underline; }
 
-h1, h2, h3, h4, h5, h6 { color: var(--heading); font-weight: 700; line-height: 1.3; margin: 1.5rem 0 0.75rem; font-family: "Georgia", "Garamond", "Playfair Display", serif; }
+h1, h2, h3, h4, h5, h6 { color: var(--heading); font-weight: 500; line-height: 1.3; margin: 1.5rem 0 0.75rem; font-family: "Georgia", "Garamond", "Playfair Display", serif; }
 
 h1 { font-size: 2.2rem; }
 
@@ -64,7 +64,7 @@ pre code { background: none; color: inherit; padding: 0; font-size: 0.99rem; }
 
 .nav-link:hover, .nav-link.active { color: var(--nav-active); text-decoration: none; }
 
-.nav-link.active { font-weight: 700; }
+.nav-link.active { font-weight: 500; }
 
 /* Hamburger button (mobile only) */
 .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 1.5rem; height: 1.125rem; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }

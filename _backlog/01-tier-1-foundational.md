@@ -7,7 +7,7 @@ These posts establish core concepts and mental models. They have no dependencies
 ## 1. Specification-First Development: The Mental Shift
 
 **ID:** `blog-spec-first`  
-**Status:** Pending  
+**Status:** pending  
 **Tier:** 1 (Foundational)  
 **Dependencies:** None  
 **Post Type:** Conceptual + Case Study  
