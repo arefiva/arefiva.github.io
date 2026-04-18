@@ -7,7 +7,7 @@ These posts establish core concepts and mental models. They have no dependencies
 ## 1. Specification-First Development: The Mental Shift
 
 **ID:** `blog-spec-first`  
-**Status:** pending  
+**Status:** Published  
 **Tier:** 1 (Foundational)  
 **Dependencies:** None  
 **Post Type:** Conceptual + Case Study  
@@ -84,7 +84,7 @@ Referenced by:
 ## 3. Acceptance Criteria That Actually Work
 
 **ID:** `blog-acceptance-criteria`  
-**Status:** Pending  
+**Status:** Published  
 **Tier:** 1 (Foundational)  
 **Dependencies:** None  
 **Post Type:** Practical How-To  

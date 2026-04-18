@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Specification-First Development: The Mental Shift"
-date: 2026-04-15 18:00:00 +0000
+date: 2026-04-16 08:00:00 +0000
 categories: [agentic-development]
 tags: [specification, agentic-development, workflow, discipline]
 ---
@@ -28,7 +28,7 @@ None of these discoveries feel productive at the moment they surface. They repre
 
 A requirement stated as "should handle large inputs gracefully" can sit in the mind as a complete idea, because graceful is a concept everyone understands. Writing down what gracefully means in this context, whether it is a timeout with a 400 response, a queued job, or a streaming response with early flush, requires making a decision that felt already-made. The specification does not just record the decision. It reveals that the decision was never made, and forces it to happen before any code depends on it.
 
-The [Red, Green, Refactor With an AI in the Loop](/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) post describes this in terms of the red phase in TDD: writing a failing test is itself a form of specification, and the discipline it enforces is not about tests but about the thinking that tests require before implementation begins. Specification-first development extends that discipline upstream, into the requirement itself, before the tests exist.
+The [Red, Green, Refactor With an AI in the Loop](/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) post describes this in terms of the red phase in TDD: writing a failing test is itself a form of specification, and the discipline it enforces is not about tests but about the thinking that tests require before implementation begins. Specification-first development extends that discipline upstream, into the requirement itself, before the tests exist.
 
 ## The Tempting Shortcut
 
@@ -60,6 +60,6 @@ These are not rules that produce spec-first culture automatically. They are supp
 
 The benefits of specification-first development do not appear at the moment the specification is written. They appear in the implementation phase, which tends to be shorter because the hard questions were answered before any code depended on the answers. They appear in code review, which surfaces real issues rather than resolving ambiguities that were never clarified. And they appear when a feature needs to change, because the team can read the specification and understand not just what the code does but why it was built that way.
 
-Cognitive debt, which the [Red, Green, Refactor](/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) post describes as the erosion of shared understanding that accumulates when output is accepted without genuine comprehension, does not accumulate in the same way in codebases where specifications were clear. The reasoning behind each feature is preserved in the document that existed before any code was written, and that document is what makes the subsequent implementation readable rather than opaque.
+Cognitive debt, which the [Red, Green, Refactor](/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) post describes as the erosion of shared understanding that accumulates when output is accepted without genuine comprehension, does not accumulate in the same way in codebases where specifications were clear. The reasoning behind each feature is preserved in the document that existed before any code was written, and that document is what makes the subsequent implementation readable rather than opaque.
 
-Where this becomes concrete: the features that required the most correction after implementation are almost always the ones where the thinking happened during coding rather than before it, and the teams that can modify their own code with confidence are almost always the ones where clarity about what was built, and why, was established before a line of it existed.
+Where this becomes concrete: the features that required the most correction after implementation are almost always the ones where the thinking happened during coding rather than before it, and the teams that can modify their own code with confidence are almost always the ones where clarity about what was built, and why, was established before a line of it existed. Once the discipline of spec-first thinking is in place, the next question becomes execution: how an agent works through a structured backlog of stories without losing track of intent or silently building on broken foundations. The [ARC: The Agentic Release Cycle](/agentic-development/2026/04/17/arc-the-agentic-release-cycle.html) post explores that machinery in detail.
