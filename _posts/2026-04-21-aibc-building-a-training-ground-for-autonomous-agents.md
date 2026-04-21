@@ -8,17 +8,23 @@ tags: [agentic-development, benchmarking, agents, skills, self-improvement]
 
 The posts in this series have explored how to work effectively with an autonomous agent: writing specifications with enough precision that the agent has something real to execute against, structuring the execution loop so context does not rot across sessions, and crafting acceptance criteria that are verifiable rather than aspirational. Underneath all of that sits a question that those posts leave largely unanswered: how do you know if the agent is actually getting better over time?
 
-Throughput is one answer, but it is incomplete. An agent that delivers more code per session is not necessarily delivering better code, and an agent that passes all its acceptance criteria is not necessarily finding the most efficient path through them. I have been thinking about this for a while, and the project I am starting next is an attempt to give it a more structured answer.
+Throughput is one answer, but it is incomplete. An agent that delivers more code per session is not necessarily delivering better code, and an agent that passes all its [acceptance criteria](/agentic-development/2026/04/18/acceptance-criteria-that-actually-work.html) is not necessarily finding the most efficient path through them. I have been thinking about this for a while, and found myself drawn toward the framing that reinforcement learning uses to approach the same question: give the agent an environment, a reward signal, and enough repeated episodes to learn from, and the policy improves. I've created something I call AI Boot Camp (AIBC), and it is built on that premise, applied to the problem of autonomous software development.
 
-AIBC, which stands for AI Boot Camp, is a benchmark framework built around a simple premise: give an agent a fixed set of real-world engineering challenges, measure how it performs across multiple dimensions of quality and efficiency, and make the results repeatable enough to be useful for comparison.
+AIBC is a benchmark framework built around a simple premise: give an agent a fixed set of real-world engineering challenges, measure how it performs across multiple dimensions of quality and efficiency, and make the results repeatable enough to be useful for comparison.
+
+## Borrowing from Reinforcement Learning
+
+Reinforcement learning (RL) offers a clean framework for thinking about iterative improvement. An agent interacts with an environment, receives a reward signal after each episode, and updates its policy based on what worked and what did not. In AIBC, the mapping is reasonably direct. The environment is the set of fixed challenges, each defined by my framework called [Autonomous Execution Specification (AES)](/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) and isolated Testcontainer infrastructure. The agent is my structured release cycle, which I call [ARC (Agentic Release Cycle)](/agentic-development/2026/04/17/arc-the-agentic-release-cycle.html), together with the underlying language model it orchestrates. Each episode is a single challenge run: ARC starts with the challenge specification, acts through a sequence of tool calls and code writes, and terminates when all [acceptance tests](/agentic-development/2026/04/18/acceptance-criteria-that-actually-work.html) pass or the run ends. The reward signal is the composite score computed across the six dimensions. The policy, in the RL sense, is ARC's orchestration logic: how it routes stories, constructs prompts, manages context, and decides when to reuse an existing skill versus derive a solution from scratch.
+
+The hermetic infrastructure is what makes this viable as a training loop. A reward signal is only useful if the same behavior produces the same score across runs, which requires the environment to behave consistently. Without reproducibility, you cannot tell whether a score changed because the policy improved or because the environment shifted under it.
 
 ## The AES as a Challenge Specification
 
-Readers of this series will recognise the format at the center of AIBC. Each challenge is defined by an AES, an Autonomous Execution Specification, the same structured machine-consumable document that the [Red, Green, Refactor](/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) post introduced as the Red phase of agentic development. The agent reads the AES, understands what must be implemented, what infrastructure is available, and what the acceptance criteria are, then executes autonomously.
+Readers of this series will recognise the format at the center of AIBC. Each challenge is defined by my Autonomous Execution Specification (AES), the same structured machine-consumable document that the [Red, Green, Refactor](/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) post introduced as the Red phase of agentic development. The agent reads the AES, understands what must be implemented, what infrastructure is available, and what the [acceptance criteria](/agentic-development/2026/04/18/acceptance-criteria-that-actually-work.html) are, then executes autonomously.
 
 The difference in AIBC is that the AES is not the starting point for a conversation about what to build. It is a fixed contract. The challenge ships with a pre-defined AES at the repository root, the acceptance tests are already written, and the agent is evaluated on how well it satisfies them. There is no authoring phase, no refinement, no back and forth. The agent gets the spec and executes.
 
-This mirrors what the [Specification-First Development](/agentic-development/2026/04/16/specification-first-development-the-mental-shift.html) post describes as the value of having a complete specification before a line of code exists, except here the specification exists before the agent even starts, and the agent cannot change it.
+This mirrors the [Specification-First Development](/agentic-development/2026/04/16/specification-first-development-the-mental-shift.html) approach where a complete specification exists before execution begins, except in AIBC the specification is fixed before the agent even starts, and the agent cannot change it.
 
 ## Real Infrastructure, Hermetic Runs
 
@@ -28,7 +34,9 @@ The infrastructure matters because it makes the challenge real rather than synth
 
 The Testcontainer approach also keeps runs hermetic. All services are deterministic and defined by the challenge spec. Scores are not contaminated by state left over from a previous run, and challenges can be reproduced exactly on any machine, which is a necessary condition for results to be comparable across agents or across time.
 
-## What Gets Measured
+## What Gets Measured: The Reward Signal
+
+In RL terms, the composite score is the reward signal. A single pass/fail metric would carry very little information about which behaviors to reinforce and which to discourage. The six dimensions decompose the reward into interpretable components, so that a run with a poor score is analyzable: was it token-heavy, thrashing through redundant tool calls, or failing tests on the first attempt? Each dimension answers a different question about why the episode went the way it did.
 
 AIBC scores agents across six dimensions.
 
@@ -38,7 +46,7 @@ AIBC scores agents across six dimensions.
 
 **Skill usage** measures how effectively the agent discovers and applies existing skills rather than solving problems it already knows how to solve. This is a proxy for memory across challenges: did the agent learn anything from the last run? The metric is scored based on whether a relevant skill was available and whether the agent found and applied it, or whether it instead re-derived a solution from scratch.
 
-**MCP server usage** measures the quality and relevance of calls to MCP servers, particularly the documentation server, context7. An agent that reads documentation before writing code for an unfamiliar library is more likely to produce a correct implementation on the first attempt than one that guesses. The scoring here is heuristic, tracking whether calls were relevant to the problem at hand rather than counting raw call volume.
+**MCP server usage** measures the quality and relevance of calls to Model Context Protocol (MCP) servers, particularly the documentation server, context7. An agent that reads documentation before writing code for an unfamiliar library is more likely to produce a correct implementation on the first attempt than one that guesses. The scoring here is heuristic, tracking whether calls were relevant to the problem at hand rather than counting raw call volume.
 
 **Tool usage** measures the ratio of meaningful tool calls to total tool calls. Thrashing, where the agent calls the same tool repeatedly without incorporating what it learned, is penalised. So is redundancy: reading a file three times when once was enough. The practical scoring rule treats a repeated unchanged read or a retry of a failed call with identical parameters as noise rather than signal.
 
@@ -46,13 +54,13 @@ AIBC scores agents across six dimensions.
 
 These six dimensions produce a composite score as a weighted sum, with weights configurable per challenge to reflect what that particular challenge is testing most directly.
 
-## The Skill Loop
+## The Skill Loop: Exploration and Exploitation
 
-The most interesting part of AIBC, at least to me, is the mechanism for self-improvement.
+The most interesting part of AIBC, at least to me, is the mechanism for self-improvement, and it maps directly onto a familiar RL tension: exploration versus exploitation.
 
 An agent working through AIBC is expected to do more than complete each challenge. It is expected to build reusable skills as it works, capturing repeatable workflows, whether that is seeding a database, spinning up a Testcontainer, publishing a NATS event, or following a particular API pattern, into skill files that future runs can discover and apply.
 
-The loop works like this: at the start of each challenge, the agent searches for skills matching the technology stack. If a relevant skill exists, it installs and uses it. If no skill exists and the agent solves a non-trivial problem, it creates the skill. Skills are committed to the repository under `.github/skills/`, which means every subsequent agent, or subsequent run of the same agent, benefits from what was discovered earlier.
+The loop works like this: at the start of each challenge, the agent searches for skills matching the technology stack. If a relevant skill exists, it installs and uses it. If no skill exists and the agent solves a non-trivial problem, it creates the skill. Skills are committed to the repository under `.github/skills/`, which means every subsequent run benefits from what was discovered earlier. Reusing an existing skill is exploitation: applying a known solution to a known class of problem. Creating a new skill is exploration: deriving a solution that does not yet exist and recording it for future use. The skill usage score rewards the agent for knowing when to exploit and penalises it for unnecessary exploration, re-solving problems it already knows how to solve.
 
 The skill creation is scored via the skill usage metric: an agent that creates a useful skill earns credit for every future run that benefits from it. This creates an incentive structure that extends beyond any single challenge, which is an unusual property for a benchmark to have.
 
@@ -66,6 +74,8 @@ The composite score is designed to reward a specific kind of agent intelligence,
 
 An agent that finds the right skill, reads the relevant documentation from context7 before writing code, writes a concise and correct implementation, and passes all tests on the first attempt will always outscore an agent that produces the same passing tests through extended iteration, redundant tool calls, and a much larger code footprint. The first agent demonstrated comprehension of the problem before acting. The second demonstrated persistence after acting.
 
+The same gating principle showed up in work I did during my master thesis designing a model that explored how Gated Linear Units (GLU) could act as selective mechanisms within it[^1]. The gate evaluates each input: if it contributes positively to the optimization goal, it flows through largely unchanged; if it contributes negatively, the gate suppresses it. The composite scoring system in AIBC operates on the same intuition. Behaviors that contribute positively to the score are reinforced as the policy is updated across runs; behaviors that contribute negatively are suppressed. The gating principle, that a well-designed selective mechanism discriminates between useful and harmful inputs before they compound, captures something important about why decomposed scoring produces a clearer improvement signal than a single pass/fail metric.
+
 When working on actual codebases, the first kind of agent is cheaper, faster, and less likely to introduce noise. A benchmark that does not distinguish between them is not measuring what matters.
 
 ## Where This Sits in the Larger Picture
@@ -77,3 +87,5 @@ The relationship between them runs in both directions. AIBC is designed to exerc
 I am still in the early stages of building this, and there is a great deal I expect to revise once the first challenges are actually running. The scoring weights feel reasonable in theory but will almost certainly need adjustment once the composite scores are producing results that conflict with what the individual dimension scores suggest. The infrastructure approach using Testcontainers makes the runs hermetic in a way I find genuinely useful, but it introduces setup complexity that I do not yet fully understand the limits of. And the skill loop depends on the agent creating skills that are actually general enough to benefit future runs, which is a non-trivial constraint that the first few runs will test quickly.
 
 What I expect to learn, and what I will write about as this develops, is whether the benchmark is measuring the right things and whether the improvement signal it produces is strong enough to drive meaningful iteration on both the agent's behavior and ARC's own implementation.
+
+[^1]: J. F. Jønler, F. Brunø Lottrup, B. Berg, D. Zhang and K. Chen, "Probabilistic Forecasts of Global Horizontal Irradiance for Solar Systems," in IEEE Sensors Letters, vol. 7, no. 1, pp. 1-4, Jan. 2023, Art no. 7000104, doi: 10.1109/LSENS.2022.3228783. [Full paper available on IEEE Xplore](https://ieeexplore.ieee.org/document/9983507).
