@@ -52,7 +52,7 @@ Once complete, the specification is captured in what I call an **Autonomous Exec
 }
 ```
 
-Each field serves a specific purpose. The `implementationNotes` array breaks down the technical approach into discrete aspects—which files to touch, which patterns to follow, key design decisions, and gotchas to avoid—rather than as a single narrative. The `acceptanceCriteria` array frames each verifiable assertion, with build and test commands at the end to gate completion. An optional `notes` field provides additional context or warnings for the implementing agent without mixing that guidance into the structured arrays. The rigor came first, during the red phase, which is what makes the downstream execution reliable.
+Each field serves a specific purpose. The `implementationNotes` array breaks down the technical approach into discrete aspects: which files to touch, which patterns to follow, key design decisions, and gotchas to avoid. This is presented as discrete points rather than as a single narrative. The `acceptanceCriteria` array frames each verifiable assertion, with build and test commands at the end to gate completion. An optional `notes` field provides additional context or warnings for the implementing agent without mixing that guidance into the structured arrays. The rigor came first, during the red phase, which is what makes the downstream execution reliable.
 
 ### Autonomous Execution
 
