@@ -13,18 +13,18 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="The posts in this series have explored how to work effectively with an autonomous agent: writing specifications with enough precision that the agent has something real to execute against, structuring the execution loop so context does not rot across sessions, and crafting acceptance criteria that are verifiable rather than aspirational. Underneath all of that sits a question that those posts leave largely unanswered: how do you know if the agent is actually getting better over time?" />
 <meta property="og:description" content="The posts in this series have explored how to work effectively with an autonomous agent: writing specifications with enough precision that the agent has something real to execute against, structuring the execution loop so context does not rot across sessions, and crafting acceptance criteria that are verifiable rather than aspirational. Underneath all of that sits a question that those posts leave largely unanswered: how do you know if the agent is actually getting better over time?" />
-<link rel="canonical" href="http://localhost:4000/agentic-development/2026/04/21/aibc-building-a-training-ground-for-autonomous-agents.html" />
-<meta property="og:url" content="http://localhost:4000/agentic-development/2026/04/21/aibc-building-a-training-ground-for-autonomous-agents.html" />
+<link rel="canonical" href="https://arefiva.github.io/agentic-development/2026/04/21/aibc-building-a-training-ground-for-autonomous-agents.html" />
+<meta property="og:url" content="https://arefiva.github.io/agentic-development/2026/04/21/aibc-building-a-training-ground-for-autonomous-agents.html" />
 <meta property="og:site_name" content="arefiva" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2026-04-21T08:00:00+02:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="AIBC: Building a Training Ground for Autonomous Agents" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-04-21T08:00:00+02:00","datePublished":"2026-04-21T08:00:00+02:00","description":"The posts in this series have explored how to work effectively with an autonomous agent: writing specifications with enough precision that the agent has something real to execute against, structuring the execution loop so context does not rot across sessions, and crafting acceptance criteria that are verifiable rather than aspirational. Underneath all of that sits a question that those posts leave largely unanswered: how do you know if the agent is actually getting better over time?","headline":"AIBC: Building a Training Ground for Autonomous Agents","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/agentic-development/2026/04/21/aibc-building-a-training-ground-for-autonomous-agents.html"},"url":"http://localhost:4000/agentic-development/2026/04/21/aibc-building-a-training-ground-for-autonomous-agents.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-04-21T08:00:00+02:00","datePublished":"2026-04-21T08:00:00+02:00","description":"The posts in this series have explored how to work effectively with an autonomous agent: writing specifications with enough precision that the agent has something real to execute against, structuring the execution loop so context does not rot across sessions, and crafting acceptance criteria that are verifiable rather than aspirational. Underneath all of that sits a question that those posts leave largely unanswered: how do you know if the agent is actually getting better over time?","headline":"AIBC: Building a Training Ground for Autonomous Agents","mainEntityOfPage":{"@type":"WebPage","@id":"https://arefiva.github.io/agentic-development/2026/04/21/aibc-building-a-training-ground-for-autonomous-agents.html"},"url":"https://arefiva.github.io/agentic-development/2026/04/21/aibc-building-a-training-ground-for-autonomous-agents.html"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="arefiva" />
+  <link type="application/atom+xml" rel="alternate" href="https://arefiva.github.io/feed.xml" title="arefiva" />
 </head>
 <body>
   <header class="site-header">
@@ -32,8 +32,6 @@
     <a class="site-title" href="/">arefiva</a>
 
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-      
-      <a class="nav-link" href="/">Home</a>
       
       <a class="nav-link" href="/agentic-development/">Agentic Development</a>
       
@@ -73,9 +71,7 @@
   <div class="post-content">
     <p>The posts in this series have explored how to work effectively with an autonomous agent: writing specifications with enough precision that the agent has something real to execute against, structuring the execution loop so context does not rot across sessions, and crafting acceptance criteria that are verifiable rather than aspirational. Underneath all of that sits a question that those posts leave largely unanswered: how do you know if the agent is actually getting better over time?</p>
 
-<p>Throughput is one answer, but it is incomplete. An agent that delivers more code per session is not necessarily delivering better code, and an agent that passes all its <a href="/agentic-development/2026/04/18/acceptance-criteria-that-actually-work.html">acceptance criteria</a> is not necessarily finding the most efficient path through them. I have been thinking about this for a while, and found myself drawn toward the framing that reinforcement learning uses to approach the same question: give the agent an environment, a reward signal, and enough repeated episodes to learn from, and the policy improves. I’ve created something I call AI Boot Camp (AIBC), and it is built on that premise, applied to the problem of autonomous software development.</p>
-
-<p>AIBC is a benchmark framework built around a simple premise: give an agent a fixed set of real-world engineering challenges, measure how it performs across multiple dimensions of quality and efficiency, and make the results repeatable enough to be useful for comparison.</p>
+<p>Throughput is one answer, but it is incomplete. An agent that delivers more code per session is not necessarily delivering better code, and an agent that passes all its <a href="/agentic-development/2026/04/18/acceptance-criteria-that-actually-work.html">acceptance criteria</a> is not necessarily finding the most efficient path through them. I have been thinking about this for a while, and found myself drawn toward the framing that reinforcement learning uses to approach the same question: give the agent an environment, a reward signal, and enough repeated episodes to learn from, and the policy improves. I’ve created something I call AI Boot Camp (AIBC), and it is built on that premise: give an agent a fixed set of real-world engineering challenges, measure how it performs across multiple dimensions of quality and efficiency, and make the results repeatable enough to be useful for comparison.</p>
 
 <h2 id="borrowing-from-reinforcement-learning">Borrowing from Reinforcement Learning</h2>
 
@@ -85,9 +81,9 @@
 
 <h2 id="the-aes-as-a-challenge-specification">The AES as a Challenge Specification</h2>
 
-<p>Readers of this series will recognise the format at the center of AIBC. Each challenge is defined by my Autonomous Execution Specification (AES), the same structured machine-consumable document that the <a href="/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html">Red, Green, Refactor</a> post introduced as the Red phase of agentic development. The agent reads the AES, understands what must be implemented, what infrastructure is available, and what the <a href="/agentic-development/2026/04/18/acceptance-criteria-that-actually-work.html">acceptance criteria</a> are, then executes autonomously.</p>
+<p>Readers of this series will recognise the format at the center of AIBC. Each challenge is defined by the AES, the same structured machine-consumable document that the <a href="/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html">Red, Green, Refactor</a> post introduced as the Red phase of agentic development. The agent reads the AES, understands what must be implemented, what infrastructure is available, and what the <a href="/agentic-development/2026/04/18/acceptance-criteria-that-actually-work.html">acceptance criteria</a> are, then executes autonomously.</p>
 
-<p>The difference in AIBC is that the AES is not the starting point for a conversation about what to build. It is a fixed contract. The challenge ships with a pre-defined AES at the repository root, the acceptance tests are already written, and the agent is evaluated on how well it satisfies them. There is no authoring phase, no refinement, no back and forth. The agent gets the spec and executes.</p>
+<p>In AIBC, the AES serves as a fixed contract rather than a starting point for conversation about what to build. The challenge ships with a pre-defined AES at the repository root, the acceptance tests are already written, and the agent is evaluated on how well it satisfies them. There is no authoring phase, no refinement, no back and forth. The agent gets the spec and executes.</p>
 
 <p>This mirrors the <a href="/agentic-development/2026/04/16/specification-first-development-the-mental-shift.html">Specification-First Development</a> approach where a complete specification exists before execution begins, except in AIBC the specification is fixed before the agent even starts, and the agent cannot change it.</p>
 
@@ -95,7 +91,7 @@
 
 <p>Each challenge spins up isolated Testcontainers: a PostgreSQL instance pre-seeded with domain data, a REST API exposing that data over HTTP, and a NATS stream for event-driven workflows. The agent must interact with all three to satisfy the acceptance criteria. When the run completes, the containers are torn down. The next run starts from a clean state.</p>
 
-<p>The infrastructure matters because it makes the challenge real rather than synthetic. An agent implementing a feature against a live database behaves differently than one generating code that is never exercised against actual services. The failure modes that appear when a query hits a seeded database with real data or when a NATS consumer misses an event are exactly the kinds of failures that matter in production. A benchmark that does not surface those is not measuring what it claims to measure.</p>
+<p>The infrastructure matters because it makes the challenge real rather than synthetic. An agent implementing a feature against a live database behaves differently than one generating code that is never exercised against actual services. The failure modes that appear when a query hits a seeded database with real data or when a NATS consumer misses an event are exactly the kinds of failures that matter in real-world development. A benchmark that does not surface those is not measuring what it claims to measure.</p>
 
 <p>The Testcontainer approach also keeps runs hermetic. All services are deterministic and defined by the challenge spec. Scores are not contaminated by state left over from a previous run, and challenges can be reproduced exactly on any machine, which is a necessary condition for results to be comparable across agents or across time.</p>
 

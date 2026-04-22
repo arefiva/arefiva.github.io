@@ -6,7 +6,7 @@ categories: [agentic-development]
 tags: [specification, acceptance-criteria, agentic-development, workflow]
 ---
 
-Every post in this series so far has circled back to the same idea: the quality of specification determines the quality of execution. The [Red, Green, Refactor](/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) post framed this as the red phase of test-driven development (TDD) applied to agentic development. The [Specification-First Development](/agentic-development/2026/04/16/specification-first-development-the-mental-shift.html) post explored why that shift is harder than it sounds and what it takes to sustain it. And [ARC](/agentic-development/2026/04/17/arc-the-agentic-release-cycle.html) showed what happens when a well-formed specification reaches an execution loop that can verify each story against its criteria before moving to the next.
+Every post in this series so far has circled back to the same idea: the quality of specification determines the quality of execution. The [Red, Green, Refactor](/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html) post framed this as the red phase of test-driven development (TDD) applied to agentic development. The [Specification-First Development](/agentic-development/2026/04/16/specification-first-development-the-mental-shift.html) post explored why that shift is harder than it sounds and what it takes to sustain it. And the [Agentic Release Cycle (ARC)](/agentic-development/2026/04/17/arc-the-agentic-release-cycle.html) post showed what happens when a well-formed specification reaches an execution loop that can verify each story against its criteria before moving to the next.
 
 What none of those posts did is examine the criteria themselves. What makes an acceptance criterion actually verifiable? Where is the line between a criterion that drives correct implementation and one that looks specific enough but still leaves the hard questions unanswered? That is what this post is about.
 
@@ -32,7 +32,7 @@ Not all criteria need the same level of detail. The appropriate specificity depe
 
 "The system should handle errors gracefully."
 
-This is not a criterion so much as an aspiration. Gracefully means different things to different people, and there is no way to verify whether the implementation satisfies it without first defining what gracefully means in this specific context. A criterion at this level does not constrain the implementation at all.
+This reads as an aspiration. Gracefully means different things to different people, and there is no way to verify whether the implementation satisfies it without first defining what gracefully means in this specific context. A criterion at this level does not constrain the implementation at all.
 
 ### Directionally useful but still ambiguous
 
@@ -67,7 +67,7 @@ Each of these questions represents a design decision. Writing the criterion forc
 
 Human developers reading acceptance criteria can interpolate. They recognize patterns from the codebase, infer unstated constraints from convention, and ask a colleague when something is ambiguous. An agent, at least in its current form, does not do those things reliably. It reads the criterion literally and implements what it says, which means the criterion needs to say what it means with less margin for interpretation.
 
-This does not require a fundamentally different style of writing. It requires closing gaps that a human reader would fill automatically.
+The adjustment is narrower than it might seem: close the gaps that a human reader would fill automatically by interpolating from context.
 
 ### What agents need explicitly stated
 
@@ -79,7 +79,7 @@ This does not require a fundamentally different style of writing. It requires cl
 
 ### What stays the same
 
-The fundamental skill is the same regardless of who reads the criteria. A well-written criterion for an agent is also a well-written criterion for a human. The difference is not in kind but in tolerance: an agent has zero tolerance for ambiguity where a human has some, so criteria written for agents tend to be more precise, and that precision benefits everyone.
+The fundamental skill is the same regardless of who reads the criteria. A well-written criterion for an agent is also a well-written criterion for a human. The distinction comes down to tolerance: an agent has zero tolerance for ambiguity where a human has some, so criteria written for agents tend to be more precise, and that precision benefits everyone.
 
 ## From Criteria to Tests
 
@@ -108,7 +108,7 @@ There are a few patterns that consistently produce criteria which look specific 
 
 "Use a recursive CTE to aggregate positions by book hierarchy."
 
-This is not an acceptance criterion. It is an implementation instruction. It tells the implementer how to build something without specifying what the correct behavior is. If the recursive CTE produces the wrong result, this criterion still passes. Acceptance criteria describe observable outcomes, not internal mechanisms.
+This is an implementation instruction. It tells the implementer how to build something without specifying what the correct behavior is. If the recursive CTE produces the wrong result, this criterion still passes. Acceptance criteria describe observable outcomes, not internal mechanisms.
 
 Implementation guidance belongs in the implementation notes field of the specification, not in the acceptance criteria. The distinction matters because acceptance criteria are what get verified. If the criterion is "use a CTE," the verification checks whether a CTE was used, not whether the aggregation is correct.
 
@@ -132,4 +132,4 @@ This is unfalsifiable. You cannot verify that all edge cases are handled, becaus
 
 ## Where This Lands
 
-The practice of writing acceptance criteria well is not separate from the broader discipline of [specification-first development](/agentic-development/2026/04/16/specification-first-development-the-mental-shift.html). It is the most concrete expression of that discipline, the place where abstract intent becomes verifiable behavior. When the criteria are specific enough to implement without interpretation and complete enough to test without guessing, the execution phase, whether performed by a human or an agent, tends to become a matter of translation rather than invention. The thinking that mattered most already happened, and it was captured in a form that persists after the implementation is done and remains useful when the feature eventually needs to change.
+The practice of writing acceptance criteria well is the most concrete expression of the broader discipline of [specification-first development](/agentic-development/2026/04/16/specification-first-development-the-mental-shift.html), the place where abstract intent becomes verifiable behavior. When the criteria are specific enough to implement without interpretation and complete enough to test without guessing, the execution phase, whether performed by a human or an agent, tends to become a matter of translation rather than invention. The thinking that mattered most already happened, and it was captured in a form that persists after the implementation is done and remains useful when the feature eventually needs to change.
