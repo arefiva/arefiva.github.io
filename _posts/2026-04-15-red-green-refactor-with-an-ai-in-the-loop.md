@@ -26,20 +26,29 @@ When starting a feature, you move through a structured conversation with the age
   "priority": 2,
   "complexity": "standard",
   "riskLevel": "low",
-  "preferredModel": "gpt-5.3-codex",
+  "preferredModel": "claude-sonnet-4.6",
   "dependsOn": ["US-010"],
-  "implementationNotes": "Add an aggregate_by_book method to PositionService in src/risk/position_service.py. Group positions by book_id and sum net_quantity. Follow the existing pattern in aggregate_by_counterparty.",
+  "notes": "Ensure the method integrates with the existing position lifecycle tracking to avoid cache invalidation issues.",
+  "implementationNotes": [
+    "Add an aggregate_by_book method to PositionService in src/risk/position_service.py",
+    "Group positions by book_id and sum net_quantity",
+    "Follow the existing pattern in aggregate_by_counterparty to maintain consistency",
+    "Positions with zero net_quantity must be excluded from the result to prevent noise in downstream calculations",
+    "Handle the edge case where positions have offsetting legs within the same book"
+  ],
   "acceptanceCriteria": [
-    "aggregate_by_book returns a dict keyed by book_id with summed net_quantity",
-    "Positions with zero net_quantity are excluded from the result",
-    "Unit tests cover empty input, single book, and multiple books with offsetting legs",
-    "ruff check passes with no errors"
+    "Unit test verifies aggregate_by_book returns a dict keyed by book_id with summed net_quantity",
+    "Unit test covers edge case: positions with zero net_quantity are excluded from the result",
+    "Unit test covers edge case: multiple books with offsetting legs are aggregated correctly",
+    "Unit test covers edge case: empty input returns an empty dict",
+    "ruff check passes with no errors",
+    "pytest passes with no failures"
   ],
   "passes": false
 }
 ```
 
-The rigor came first, during the red phase, which is what makes the downstream execution reliable.
+Each field serves a specific purpose. The `implementationNotes` array breaks down the technical approach into discrete aspects—which files to touch, which patterns to follow, key design decisions, and gotchas to avoid—rather than as a single narrative. The `acceptanceCriteria` array frames each verifiable assertion, with build and test commands at the end to gate completion. An optional `notes` field provides additional context or warnings for the implementing agent without mixing that guidance into the structured arrays. The rigor came first, during the red phase, which is what makes the downstream execution reliable.
 
 ### Autonomous Execution
 
