@@ -10,7 +10,7 @@ Test-Driven Development (TDD) rests on a deceptively simple mantra: Red goes to 
 
 What makes TDD powerful is not the tests themselves, but the discipline the cycle enforces. The red phase forces you to understand what you are building before you build it, because you cannot write a failing test for something you have not thought through. That clarity shapes how quickly and smoothly the green and refactor phases unfold. The green phase follows: write the minimum code to make the test pass, because the test is the specification. Then refactor, using a passing suite as a safety net to clean up the implementation while locking behavior in place. Do this across a career, and you end up with a codebase that is both well-tested and well-understood, because every piece was thought through before it existed.
 
-I have been building software with [an agentic workflow](/agentic-development/) for a while now, and I notice the workflow follows the same cycle as TDD, just with different tools and a different executor.
+I have been building software with [an agentic workflow](/agentic-development/) for a while now, and I noticed my workflow follows the same cycle as TDD, just with different tools and a different executor.
 
 ## The Agentic Cycle
 
