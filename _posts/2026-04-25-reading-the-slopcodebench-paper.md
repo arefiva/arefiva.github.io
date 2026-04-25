@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reading the SlopCodeBench Paper"
-date: 2026-04-25 08:00:00 +0000
+date: 2026-04-25 07:00:00 +0000
 categories: [paper-reviews]
 tags: [ai-tools, productivity, research, code-quality]
 ---
