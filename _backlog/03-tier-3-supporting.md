@@ -12,7 +12,8 @@ These posts explore nuances, supporting concepts, and advanced techniques. Most 
 **Dependencies:**  
 - Requires: `blog-spec-first`  
 **Post Type:** Conceptual + Case Study  
-**Referenced in original post:** Section "Combining the Approaches", "Connection Through Understanding"
+**Referenced in original post:** Section "Combining the Approaches", "Connection Through Understanding"  
+**LinkedIn post:** `li-collaboration` (`communication/LinkedIn/_backlog/li-collaboration.md`)
 
 ### Overview
 
@@ -57,7 +58,8 @@ Related to:
 **Dependencies:**  
 - Requires: `blog-spec-first`  
 **Post Type:** Practical How-To  
-**Referenced in original post:** "agent's ability to handle scaffolding and boilerplate quickly"
+**Referenced in original post:** "agent's ability to handle scaffolding and boilerplate quickly"  
+**LinkedIn post:** `li-scaffolding` (`communication/LinkedIn/_backlog/li-scaffolding.md`)
 
 ### Overview
 

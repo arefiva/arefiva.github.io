@@ -13,7 +13,8 @@ These posts provide practical guidance on implementing the agentic workflow appr
 - Requires: `blog-spec-first`
 - Requires: `blog-acceptance-criteria`  
 **Post Type:** Practical How-To + Conceptual  
-**Referenced in original post:** Section "Writing the Specification", JSON example
+**Referenced in original post:** Section "Writing the Specification", JSON example  
+**LinkedIn post:** `li-aes-guide` (`communication/LinkedIn/_backlog/li-aes-guide.md`)
 
 ### Overview
 
@@ -59,7 +60,8 @@ Feeds into:
 **Dependencies:**  
 - Requires: `blog-spec-first`  
 **Post Type:** Practical How-To + Case Study  
-**Referenced in original post:** Mentioned in passing: "Follow the existing pattern"
+**Referenced in original post:** Mentioned in passing: "Follow the existing pattern"  
+**LinkedIn post:** `li-patterns` (`communication/LinkedIn/_backlog/li-patterns.md`)
 
 ### Overview
 
@@ -102,7 +104,8 @@ Referenced by:
 - Requires: `blog-spec-first`
 - Requires: `blog-tdd-intro`  
 **Post Type:** Practical How-To + Case Study  
-**Referenced in original post:** Section "Human Review", "The refactor phase remains entirely human"
+**Referenced in original post:** Section "Human Review", "The refactor phase remains entirely human"  
+**LinkedIn post:** `li-code-review` (`communication/LinkedIn/_backlog/li-code-review.md`)
 
 ### Overview
 
@@ -149,7 +152,8 @@ Related to:
 **Dependencies:**  
 - Requires: `blog-aes-guide`  
 **Post Type:** Practical How-To + Case Study  
-**Referenced in original post:** "automated code review runs across the entire branch, identifying... architectural mismatches"
+**Referenced in original post:** "automated code review runs across the entire branch, identifying... architectural mismatches"  
+**LinkedIn post:** `li-arch-review` (`communication/LinkedIn/_backlog/li-arch-review.md`)
 
 ### Overview
 

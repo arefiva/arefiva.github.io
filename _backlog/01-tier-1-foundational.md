@@ -11,7 +11,8 @@ These posts establish core concepts and mental models. They have no dependencies
 **Tier:** 1 (Foundational)  
 **Dependencies:** None  
 **Post Type:** Conceptual + Case Study  
-**Referenced in original post:** Section "The Red Phase Remains Central", "Combining the Approaches"
+**Referenced in original post:** Section "The Red Phase Remains Central", "Combining the Approaches"  
+**LinkedIn post:** `li-spec-first` (`communication/LinkedIn/_backlog/li-spec-first.md`)
 
 ### Overview
 
@@ -51,7 +52,8 @@ Feeds into:
 **Tier:** 1 (Foundational)  
 **Dependencies:** None  
 **Post Type:** Conceptual + Practical How-To  
-**Referenced in original post:** Opening section, "Combining the Approaches"
+**Referenced in original post:** Opening section, "Combining the Approaches"  
+**LinkedIn post:** `li-tdd-intro` (`communication/LinkedIn/_backlog/li-tdd-intro.md`)
 
 ### Overview
 
@@ -88,7 +90,8 @@ Referenced by:
 **Tier:** 1 (Foundational)  
 **Dependencies:** None  
 **Post Type:** Practical How-To  
-**Referenced in original post:** Section "Writing the Specification", the JSON example with specific assertions
+**Referenced in original post:** Section "Writing the Specification", the JSON example with specific assertions  
+**LinkedIn post:** `li-acceptance-criteria` (`communication/LinkedIn/_backlog/li-acceptance-criteria.md`)
 
 ### Overview
 
@@ -125,7 +128,8 @@ Required by:
 **Tier:** 1 (Foundational)  
 **Dependencies:** None  
 **Post Type:** Conceptual + Case Study  
-**Referenced in original post:** Section "Avoiding Cognitive Debt"
+**Referenced in original post:** Section "Avoiding Cognitive Debt"  
+**LinkedIn post:** `li-cog-debt` (`communication/LinkedIn/_backlog/li-cog-debt.md`)
 
 ### Overview
 
