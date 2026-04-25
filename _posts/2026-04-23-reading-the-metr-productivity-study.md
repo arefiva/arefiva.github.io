@@ -2,7 +2,7 @@
 layout: post
 title: "Reading the METR Productivity Study"
 date: 2026-04-23 08:00:00 +0000
-categories: [agentic-development]
+categories: [paper-reviews]
 tags: [ai-tools, productivity, research]
 ---
 
