@@ -150,3 +150,26 @@ pre code { background: none; color: inherit; padding: 0; font-size: 0.99rem; }
   .post-date { grid-column: 1; }
   .post-link { grid-column: 1; grid-row: 2; }
   .post-excerpt { grid-column: 1; grid-row: 3; } }
+/* ========================================================= Mermaid diagrams — click-to-expand ========================================================= */
+.mermaid { cursor: zoom-in; position: relative; border-radius: 6px; margin: 1.5rem 0; transition: box-shadow 0.2s ease; }
+
+.mermaid:hover { box-shadow: 0 0 0 2px var(--accent); }
+
+.mermaid:hover::after { content: '⤢  Click to expand'; position: absolute; bottom: 0.5rem; right: 0.75rem; background: var(--surface); color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; font-size: 0.75rem; pointer-events: none; white-space: nowrap; }
+
+/* Modal overlay */
+.mermaid-modal { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; }
+
+.mermaid-modal.open { display: flex; }
+
+.mermaid-modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(4px); }
+
+.mermaid-modal-close { position: absolute; top: 1rem; right: 1rem; z-index: 10001; width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s ease; }
+
+.mermaid-modal-close:hover { background: var(--border); }
+
+.mermaid-modal-hint { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); z-index: 10001; color: var(--text-muted); font-size: 0.78rem; pointer-events: none; white-space: nowrap; }
+
+.mermaid-modal-container { position: relative; z-index: 10000; width: 65vw; height: 55vh; cursor: grab; overflow: hidden; display: flex; align-items: center; justify-content: center; user-select: none; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6); }
+
+.mermaid-modal-svg-wrapper { transform-origin: center center; will-change: transform; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
