@@ -515,6 +515,11 @@ pre code {
   align-items: center;
   justify-content: center;
   user-select: none;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
 }
 
 .mermaid-modal-svg-wrapper {
@@ -523,4 +528,6 @@ pre code {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 85vw;
+  max-height: 80vh;
 }

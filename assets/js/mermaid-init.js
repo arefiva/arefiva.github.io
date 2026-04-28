@@ -148,12 +148,26 @@
 
     svgWrapper.innerHTML = '';
     var clone = svg.cloneNode(true);
-    clone.removeAttribute('width');
+
+    // Mermaid scopes all theme CSS to the SVG's unique ID.
+    // Reassign a new ID on the clone and rewrite the internal <style> so the
+    // theme rules target the clone's elements, not the original inline SVG.
+    var originalId = svg.getAttribute('id') || '';
+    var newId = 'mermaid-modal-' + Date.now();
+    clone.setAttribute('id', newId);
+    if (originalId) {
+      var styleEl = clone.querySelector('style');
+      if (styleEl) {
+        styleEl.textContent = styleEl.textContent.split(originalId).join(newId);
+      }
+    }
+
+    // Preserve the SVG's width="100%" so it fills the wrapper via its viewBox.
+    // Only adjust height; leave Mermaid's other inline styles intact.
     clone.removeAttribute('height');
-    clone.style.maxWidth = '88vw';
-    clone.style.maxHeight = '80vh';
-    clone.style.width = 'auto';
+    clone.style.width = '100%';
     clone.style.height = 'auto';
+    clone.style.display = 'block';
     svgWrapper.appendChild(clone);
 
     state.scale = 1;
