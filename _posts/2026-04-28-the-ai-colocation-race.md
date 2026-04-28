@@ -36,6 +36,28 @@ In each case, the direction of travel is the same: from generic tools that work 
 
 The phrase "custom harness" might sound like a configuration file or a system prompt with more detail. The actual difference runs considerably deeper.
 
+The diagrams below show the structural contrast. On the left, the generic tool path: the developer's context is whatever happens to be open in the session, and every request travels outward to a commercial API before returning a response. On the right, the custom harness: the agent is wired directly into internal systems, draws on persistent organizational context, and routes different kinds of work to different models.
+
+```mermaid
+flowchart TB
+    subgraph G ["Off-the-shelf tool"]
+        direction LR
+        gD[Developer] --> gT[AI Tool]
+        gT -->|Session context only| gAPI[Commercial API]
+        gAPI --> gM[Foundation Model]
+    end
+
+    subgraph C ["Custom Harness"]
+        direction LR
+        cD[Developer] --> cH[Harness]
+        cH --> cR{Model router}
+        cR -->|Routine tasks| cL[Private model]
+        cR -->|Complex tasks| cAPI[Commercial API]
+        cH <-->|Architecture · Conventions\nCI/CD · Risk policies| cCtx[(Persistent context)]
+        cH <--> cSys[Build · Review · Deploy]
+    end
+```
+
 A custom harness means the agent lives inside your stack rather than outside it making API calls. Local or private model deployment removes the constraint that everything the agent sees must be safe to transmit to an external provider. For regulated industries that constraint is immediate and concrete, but the competitive upside is broader: the more context you can give the agent, the more useful it becomes, and a harness with unrestricted access to internal systems can maintain context depth that a generic tool operating on sanitized inputs cannot match.
 
 Model selection becomes a first-class concern once you are not locked to a single vendor's offering. An organization routing simple refactoring tasks through a small, fast, cheap model and routing architectural decisions through a larger frontier model is operating its AI budget in a fundamentally different way than one sending everything through the same commercial API. The routing logic itself becomes organizational knowledge, encoding judgments about where cost matters more than capability and where it does not.
@@ -45,6 +67,17 @@ The harness also carries operational context that generic tools receive once per
 ## The stratification that follows
 
 The asymmetry this creates compounds over time. A generic tool improves as the underlying model improves, but the improvement is shared equally across every user of that tool. The delta between any two users of the same tool stays roughly constant. A custom harness improves as both the model improves and as the harness itself becomes more specific to the codebase, the process, and the organizational context that has accumulated inside it.
+
+The feedback loop looks like this: each session adds decisions and patterns to the persistent context, which makes the next session more informed, which produces better output, which generates more useful patterns to capture.
+
+```mermaid
+flowchart LR
+    A[Developer works\nwith harness] --> B[Decisions & patterns\ncaptured as context]
+    B --> C[Persistent context\ngrows richer]
+    C --> D[Agent output\nimproves]
+    D --> A
+    E([Foundation model\nimproves]) -.->|also benefits| D
+```
 
 For teams where the investment required to build and maintain a custom harness is not justified by the return, the generic tools represent the majority of the available benefit at a fraction of the cost. The HFT arms race did not make ordinary brokerage accounts worthless. It created a layer of competitors operating in a meaningfully different environment, and everyone else continued using the same exchanges to participate in the same markets.
 
