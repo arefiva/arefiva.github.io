@@ -508,7 +508,8 @@ pre code {
   position: relative;
   z-index: 10000;
   width: 90vw;
-  height: 85vh;
+  max-height: 88vh;
+  height: auto;
   cursor: grab;
   overflow: hidden;
   display: flex;
@@ -529,5 +530,5 @@ pre code {
   align-items: center;
   justify-content: center;
   width: 85vw;
-  max-height: 80vh;
+  max-height: calc(88vh - 4rem);
 }
