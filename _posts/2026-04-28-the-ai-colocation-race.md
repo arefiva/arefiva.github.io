@@ -93,7 +93,7 @@ Compliance requirements in financial services, healthcare, and defense also push
 
 ## Building toward it
 
-We have not built a full custom harness. The work [mARCH](/agentic-development/2026/04/17/march-the-agentic-release-cycle-harness.html) does runs on top of GitHub Copilot CLI, which means the model still runs on commercial infrastructure through Copilot's API, and the context available to it is limited to whatever the session provides plus what we have explicitly encoded in project files.
+We have not built a full custom harness. The work [mARCH](/agentic-development/2026/04/17/march-the-agentic-release-cycle-harness.html) does run on top of GitHub Copilot CLI, which means the model still runs on commercial infrastructure through Copilot's API, and the context available to it is limited to whatever the session provides plus what we have explicitly encoded in project files.
 
 What mARCH adds is the layer above that: structured specification, orchestration, and accumulated context.
 
@@ -112,7 +112,9 @@ flowchart LR
 
 There is also a review gate that pauses after quality gates pass and opens a draft pull request for human sign-off before a story is marked as passing, and a final code review phase that compares the feature branch against the main branch and generates a new AES with fix stories if issues are found. The diagram above is a simplified version of the actual flow.
 
-The structure that results from working through an AES replaces ad-hoc prompting with something closer to a specification-driven process. Context persists across stories and feeds forward into subsequent prompts. Automated quality gates catch failures before they accumulate, and each rejection becomes part of the context for the next attempt. Model routing is already there: each story in the AES carries a complexity and risk annotation, and mARCH uses those to select which model to invoke for that story, routing straightforward work to faster and cheaper models and directing high-complexity or high-risk stories to more capable ones. Private deployment and deep integration with the full internal toolchain are not yet there, and the underlying models remain commercial and external.
+The structure that results from working through an AES replaces ad-hoc prompting with something closer to a specification-driven process. Context persists across stories and feeds forward into subsequent prompts. Automated quality gates catch failures before they accumulate, and each rejection becomes part of the context for the next attempt.
+
+Model routing is already there: each story in the AES carries a complexity and risk annotation, and mARCH uses those to select which model to invoke for that story, routing straightforward work to faster and cheaper models and directing high-complexity or high-risk stories to more capable ones. Private deployment and deep integration with the full internal toolchain are not yet there, and the underlying models remain commercial and external.
 
 We use it daily. The accumulated session context grows with each story completed, and the behavior of the agent on a later story in a long specification is observably different from its behavior on an early one, not because the model changed, but because the context it arrives with is richer. That observation is what makes the feedback loop diagram in the earlier section feel less theoretical.
 
