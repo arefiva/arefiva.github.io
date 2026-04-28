@@ -93,7 +93,7 @@ Compliance requirements in financial services, healthcare, and defense also push
 
 ## Building toward it
 
-We have not built a full custom harness. The work mARCH does runs on top of GitHub Copilot CLI, which means the model still runs on commercial infrastructure through Copilot's API, and the context available to it is limited to whatever the session provides plus what we have explicitly encoded in project files.
+We have not built a full custom harness. The work [mARCH](/agentic-development/2026/04/17/march-the-agentic-release-cycle-harness.html) does runs on top of GitHub Copilot CLI, which means the model still runs on commercial infrastructure through Copilot's API, and the context available to it is limited to whatever the session provides plus what we have explicitly encoded in project files.
 
 What mARCH adds is the layer above that: structured specification, orchestration, and accumulated context.
 
