@@ -91,6 +91,33 @@ Open-source models have been closing the gap with commercial frontier models fas
 
 Compliance requirements in financial services, healthcare, and defense also push in this direction independently of competitive logic. In those industries, sending source code or sensitive business logic through a third-party API is often prohibited outright, which means building a harness with private model deployment is simply the baseline for AI participation, separate from any conversation about competitive advantage.
 
+## Building toward it
+
+We have not built a full custom harness. The work Ralph does runs on top of GitHub Copilot CLI, which means the model still runs on commercial infrastructure through Copilot's API, and the context available to it is limited to whatever the session provides plus what we have explicitly encoded in project files.
+
+What Ralph adds is the layer above that: structured specification, orchestration, and accumulated context.
+
+Ralph reads from an [Autonomous Execution Specification (AES)](/agentic-development/2026/04/15/red-green-refactor-with-an-ai-in-the-loop.html), a JSON-based format I introduced in an earlier post that describes a feature as a set of user stories with acceptance criteria and explicit dependency ordering. Rather than invoking the Copilot agent manually with an ad-hoc prompt, Ralph picks the next unblocked story, builds an enriched prompt containing the story details alongside summaries from prior sessions and any guardrail feedback from previous attempts, and invokes the agent. After the agent responds, Ralph validates the result against a set of guardrails: did the agent modify files, did the build pass, did the implementation demonstrate coverage of the acceptance criteria. On failure, Ralph retries with the failure feedback appended to the next prompt. On success, it advances to the next story.
+
+```mermaid
+flowchart LR
+    Dev[Developer] --> AES["AES Specification\nstories · criteria · order"]
+    AES --> R[Ralph]
+    R -->|"story + session context\n+ prior feedback"| CL["Copilot CLI agent"]
+    CL -->|response| GQ["Guardrails &\nquality gates"]
+    GQ -->|fail: append feedback| R
+    GQ -->|pass| CTX[("Session context\n& summaries")]
+    CTX -.->|carries into\nnext story| R
+```
+
+There is also a review gate that pauses after quality gates pass and opens a draft pull request for human sign-off before a story is marked as passing, and a final code review phase that compares the feature branch against the main branch and generates a new AES with fix stories if issues are found. The diagram above is a simplified version of the actual flow.
+
+The structure that results from working through an AES replaces ad-hoc prompting with something closer to a specification-driven process. Context persists across stories and feeds forward into subsequent prompts. Automated quality gates catch failures before they accumulate, and each rejection becomes part of the context for the next attempt. Model routing, private deployment, and integration with the full internal toolchain are not yet there, and the underlying model remains commercial and external.
+
+We use it daily. The accumulated session context grows with each story completed, and the behavior of the agent on a later story in a long specification is observably different from its behavior on an early one, not because the model changed, but because the context it arrives with is richer. That observation is what makes the feedback loop diagram in the earlier section feel less theoretical.
+
+The gap between what Ralph does today and what organizations like those described earlier are building remains significant. The direction is the same.
+
 ## The analogy and its limits
 
 The HFT analogy is imperfect in the usual ways any analogy is imperfect. Software development is not a zero-sum game where one team winning necessarily means another loses. Physical co-location also creates a kind of moat that software infrastructure rarely does: you can copy the pattern, but you cannot occupy the same rack in the same data center. Software advantages diffuse more easily. A harness architecture that works well at one organization can, in principle, be understood and replicated by another, which matters less in finance where speed is the edge and more in software where the edge is organizational context that cannot be copied regardless of how well the architecture is understood.
