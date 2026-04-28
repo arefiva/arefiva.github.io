@@ -36,7 +36,7 @@ In each case, the direction of travel is the same: from generic tools that work 
 
 The phrase "custom harness" might sound like a configuration file or a system prompt with more detail. The actual difference runs considerably deeper.
 
-The diagrams below show the structural contrast. On the left, the generic tool path: the developer's context is whatever happens to be open in the session, and every request travels outward to a commercial API before returning a response. On the right, the custom harness: the agent is wired directly into internal systems, draws on persistent organizational context, and routes different kinds of work to different models.
+The diagrams below show the structural contrast. On the right, the generic tool path: the developer's context is whatever happens to be open in the session, and every request travels outward to a commercial API before returning a response. On the left, the custom harness: the agent is wired directly into internal systems, draws on persistent organizational context, and routes different kinds of work to different models.
 
 ```mermaid
 flowchart TB
