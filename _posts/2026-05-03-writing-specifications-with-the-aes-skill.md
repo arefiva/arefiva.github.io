@@ -12,15 +12,6 @@ The [Red, Green, Refactor With an AI in the Loop](/agentic-development/2026/04/1
 
 The AES is created through a Copilot skill, a short prompt file committed to the repository under `.github/skills/aes/`. When invoked in plan mode with a feature description, the skill acts as a structured guide through the red phase of the agentic cycle. It starts with clarifying questions about scope, goals, and constraints, then produces two artifacts: a human-readable product requirements document (PRD) saved as a markdown file, and the machine-consumable `aes.json` that mARCH reads at execution time.
 
-```mermaid
-flowchart TD
-    A[Feature description] --> B[AES skill in plan mode]
-    B --> C[Clarifying questions]
-    C --> D[PRD — tasks/prd-feature/prd.md]
-    D --> E[aes.json — scripts/march/aes.json]
-    E --> F[mARCH execution]
-```
-
 The two-artifact design is deliberate. The PRD captures the reasoning in a form that a human can review and modify; it is the specification that answers "why was this built this way." The `aes.json` strips that reasoning into the structured fields that the executor needs: story identifiers, implementation notes, acceptance criteria, priority, complexity, and dependency links. Both exist and reference each other, but they serve different audiences.
 
 The clarifying question phase surfaces decisions about scope boundaries, pagination strategies, error handling behavior, and edge cases that would otherwise emerge during implementation at a higher cost. By the time the PRD is written, those decisions have been made and recorded, not left for the agent to infer.
